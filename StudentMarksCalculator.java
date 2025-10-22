@@ -1,70 +1,57 @@
-class Student{
-private String name;
-private int marks;
-private boolean isPassed;
+class Student {
+    // Instance variables
+    private String name;
+    private int marks;
 
-private static int totalStudent=0;
+    // Static variable to track total students
+    private static int totalStudents = 0;
 
+    // Constructor
+    public Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+        totalStudents++;  // increment when a new student is created
+    }
 
-public Student(String name, int marks, boolean isPassed){
-this.name = name;
-this.marks = marks;
+    // Getter for marks
+    public int getMarks() {
+        return marks;
+    }
 
-this.isPassed = marks >= 35;
+    // Setter for marks
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
 
-if(isPassed){
-	totalStudent++;
-}
-}
+    // Method to check if student passed
+    public boolean isPassed() {
+        return marks >= 35;
+    }
 
-public String getName(){
-	return name;
-}
-public int getMarks(){
-	return marks;
-}
-public boolean getIsPassed(){
-	return isPassed;
-}
-public void setName(String name){
-  this.name = name;
-}
+    // Getter for name
+    public String getName() {
+        return name;
+    }
 
-public void setMarks(int marks){
-  this.marks=marks;
-}
-
-public static void showTotalStudent(){
-System.out.println("Total Passed Student: "+totalStudent);
-}
-
-public void setIsPassed(boolean isPassed){
-if(this.isPassed != isPassed){
-if(isPassed || marks >= 35 ){
-totalStudent++;
-}
-else{
-totalStudent--;
-}
-}
-this.isPassed=isPassed;
+    // Static method to show total students
+    public static void showTotalStudents() {
+        System.out.println("Total students: " + totalStudents);
+    }
 }
 
+public class StudentMarksCalculator {
+    public static void main(String[] args) {
+        // Creating students
+        Student s1 = new Student("Rahul", 78);
+        Student s2 = new Student("Pooja", 34);
+        Student s3 = new Student("Amit", 65);
 
-}
+        // Checking pass/fail
+        System.out.println("Student " + s1.getName() + " Passed? " + s1.isPassed());
+        System.out.println("Student " + s2.getName() + " Passed? " + s2.isPassed());
+        System.out.println("Student " + s3.getName() + " Passed? " + s3.isPassed());
 
-class StudentMarksCalculator{
-public static void main (String[] args){
-
-Student s1 = new Student("Rahul",85,true);
-Student s2 = new Student ("Pooja",60,false);
-Student s3 = new Student("Amit",72, true);
-
-System.out.println("Student Rahul Passed?" +b1.getIsPassed());
-System.out.println("Student Pooja Passed?" +b2.getIsPassed());
-System.out.println("Student Amit Passed?" +b3.getIsPassed());
-
-Student.showTotalStudent();
-}
-
+        // Showing total students
+        Student.showTotalStudents();
+    }
 }
